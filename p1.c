@@ -123,7 +123,10 @@ int main(){
 			subgrids[i].right = j + 2;
 		}//end for j
 	//end for i
-
+	
+	pthread_t colThread[9];
+	pthread_t rowThread[9];
+	pthread_t subgridThread[9];
 	int i;
 	for (int i = 0; i < 9, i++){
 		int* a = malloc(sizeof(int));
