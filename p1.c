@@ -43,7 +43,7 @@ int main(){
 	int x, y;
 
 
-	in_file =  fopen("SudokuPuzzle.txt","r")
+	in_file =  fopen("SudokuPuzzle.txt","r");
 
 	if (in_file == NULL){
 		printf("Error! Could not open file\n");
@@ -53,7 +53,7 @@ int main(){
 	//READ THE SUDOKU PUZZLE
 	for (x=0; x<9; x++) {
 		for (y=0; y<9; y++){
-			fscanf(in_file, "%d", &sudokuPuzzle[x][y]); 
+			fscanf(in_file, "%d", &sudokuPuzzle[x][y]);
 		} //end for y
 	}//end for  x
 	fclose(in_file);
@@ -79,8 +79,8 @@ int main(){
 	//     tr,br,lc,rc
 	// c1 = {0,8,0,0}
 	// c2 = {0,8,1,1}
-	// c8 = {0,8,7,7} 
-	cellRange cols[9]
+	// c8 = {0,8,7,7}
+	cellRange cols[9];
 	for (int i = 0; i < 9; i++){
 		cols[i].tr = 0;
 		cols[i].br = 8;
@@ -93,7 +93,7 @@ int main(){
 	// r1 = {0,0,0,8}
 	// r2 = {1,1,0,8}
 	// r8 = {0,8,0,8}
-	cellRange rows[9]
+	cellRange rows[9];
 	for (int i = 0; i < 9; i++){
 		rows[i].tr = i;
 		rows[i].br = i;
@@ -117,32 +117,25 @@ int main(){
 	cellRange subgrids[9];
 	for (int i = 0; i < 9; i+=3){
 		for(int j = 0; j <9; j += 3){
-			subgrids[i].top = i;
-			subgrids[i].bottom = i+2;
-			subgrids[i].left = j;
-			subgrids[i].right = j + 2;
+			subgrids[i].tr = i;
+			subgrids[i].br = i+2;
+			subgrids[i].lc = j;
+			subgrids[i].rc = j + 2;
 		}//end for j
 	//end for i
-	
+
 	pthread_t colThread[9];
 	pthread_t rowThread[9];
 	pthread_t subgridThread[9];
 	int i;
-	for (int i = 0; i < 9, i++){
+	for (int i = 0; i < 9; i++){
 		int* a = malloc(sizeof(int));
 
 		*a = i;
 
 		pthread_create(colThread[9], NULL, colChecker, a);
 		pthread_create(rowThread[9], NULL, rowChecker,  a);
-		pthread_create(subgriddThread[9], NULL, subgridChecker, a);
-	}//end for
-
-
-	for (int i = 0; i < 9; i++){
-		pthread_join(tid_cols[i], NULL);
-		pthread_join(tid_rows[i], NULL);
-		pthread_join(tid_subgrids[i],NULL);
+		pthread_create(subgridThread[9], NULL, subgridChecker, a);
 	}//end for
 
 
