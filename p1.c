@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include <pthread.h>
 
 typedef int bool;
@@ -142,6 +141,11 @@ int main(){
 
 	return 0;
 
+
+
+}//end main
+
+
 void *colChecker(void *param){
 
 }
@@ -153,6 +157,3 @@ void *rowChecker(void *param){
 void *subgridChecker(void *param){
 
 }
-
-
-}//end main
