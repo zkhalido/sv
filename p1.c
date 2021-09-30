@@ -132,15 +132,15 @@ int main(){
 
 		*a = i;
 
-		pthread_create(colThread[9], NULL, colChecker, a);
+		pthread_create(&colThread[i], NULL, colChecker, a);
 	}//end for
 
-    	for (int i = 0; i < 9; i++){
+    for (int i = 0; i < 9; i++){
 		int* a = malloc(sizeof(int));
 
 		*a = i;
 
-		pthread_create(rowThread[9], NULL, rowChecker,  a);
+		pthread_create(&rowThread[i], NULL, rowChecker,  a);
 	}//end for
 
 	for (int i = 0; i < 9; i++){
@@ -148,7 +148,7 @@ int main(){
 
 		*a = i;
 
-		pthread_create(subgridThread[9], NULL, subgridChecker, a);
+		pthread_create(&subgridThread[i], NULL, subgridChecker, a);
 	}//end for
 
 	return 0;
@@ -159,13 +159,13 @@ int main(){
 
 
 void *colChecker(void *param){
-
+    printf("bhjv");
 }
 
 void *rowChecker(void *param){
-
+    printf("hcg");
 }
 
 void *subgridChecker(void *param){
-
+    printf("cfgh");
 }
