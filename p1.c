@@ -133,11 +133,23 @@ int main(){
 		*a = i;
 
 		pthread_create(colThread[9], NULL, colChecker, a);
-		pthread_create(rowThread[9], NULL, rowChecker,  a);
-		pthread_create(subgridThread[9], NULL, subgridChecker, a);
 	}//end for
 
+    for (int i = 0; i < 9; i++){
+		int* a = malloc(sizeof(int));
 
+		*a = i;
+
+		pthread_create(rowThread[9], NULL, rowChecker,  a);
+	}//end for
+
+	for (int i = 0; i < 9; i++){
+		int* a = malloc(sizeof(int));
+
+		*a = i;
+
+		pthread_create(subgridThread[9], NULL, subgridChecker, a);
+	}//end for
 
 	return 0;
 
