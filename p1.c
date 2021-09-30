@@ -122,7 +122,7 @@ int main(){
 			subgrids[i].lc = j;
 			subgrids[i].rc = j + 2;
 		}//end for j
-	//end for i
+	}//end for i
 
 	pthread_t colThread[9];
 	pthread_t rowThread[9];
@@ -141,7 +141,6 @@ int main(){
 
 
 	return 0;
-}//end main
 
 void *colChecker(void *param){
 
@@ -154,3 +153,6 @@ void *rowChecker(void *param){
 void *subgridChecker(void *param){
 
 }
+
+
+}//end main
