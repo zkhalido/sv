@@ -133,9 +133,9 @@ int main(){
 
 		*a = i;
 
-		pthread_create(&tid_column[i], NULL, colChecker, &cols[i], a);
-		pthread_create(&tid_row[i], NULL, rowChecker, &rows[i], a);
-		pthread_create(&tid_subgrids[i], NULL, subgridChecker, &subgrids[i], a);
+		pthread_create(colThread[9], NULL, colChecker, a);
+		pthread_create(rowThread[9], NULL, rowChecker,  a);
+		pthread_create(subgriddThread[9], NULL, subgridChecker, a);
 	}//end for
 
 
